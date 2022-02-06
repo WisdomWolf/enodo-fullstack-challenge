@@ -1,0 +1,77 @@
+# coding: utf-8
+from sqlalchemy import Boolean, Column, Float, Integer, Text
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+metadata = Base.metadata
+
+
+class RealEstateProperty(Base):
+    __tablename__ = 'real_estate_properties'
+
+    property_id = Column(Integer, primary_key=True)
+    full_address = Column(Text)
+    longitude = Column(Float)
+    latitude = Column(Float)
+    zip = Column(Integer)
+    rec_type = Column(Text)
+    pin = Column(Integer)
+    ovacls = Column(Integer)
+    class_description = Column(Text)
+    current_land = Column(Integer)
+    current_building = Column(Integer)
+    current_total = Column(Integer)
+    estimated_market_value = Column(Integer)
+    prior_land = Column(Integer)
+    prior_building = Column(Integer)
+    prior_total = Column(Integer)
+    pprior_land = Column(Integer)
+    pprior_building = Column(Integer)
+    pprior_total = Column(Integer)
+    pprior_year = Column(Integer)
+    town = Column(Integer)
+    volume = Column(Integer)
+    loc = Column(Text)
+    tax_code = Column(Integer)
+    neighborhood = Column(Integer)
+    houseno = Column(Integer)
+    dir = Column(Text)
+    street = Column(Text)
+    suffix = Column(Text)
+    apt = Column(Text)
+    city = Column(Text)
+    res_type = Column(Text)
+    bldg_use = Column(Text)
+    apt_desc = Column(Text)
+    comm_units = Column(Integer)
+    ext_desc = Column(Text)
+    full_bath = Column(Integer)
+    half_bath = Column(Integer)
+    bsmt_desc = Column(Text)
+    attic_desc = Column(Text)
+    ac = Column(Integer)
+    fireplace = Column(Integer)
+    gar_desc = Column(Text)
+    age = Column(Integer)
+    building_sq_ft = Column(Integer)
+    land_sq_ft = Column(Integer)
+    bldg_sf = Column(Integer)
+    units_tot = Column(Integer)
+    multi_sale = Column(Boolean)
+    deed_type = Column(Integer)
+    sale_date = Column(Text)
+    sale_amount = Column(Integer)
+    appcnt = Column(Integer)
+    appeal_a = Column(Integer)
+    appeal_a_status = Column(Text)
+    appeal_a_result = Column(Text)
+    appeal_a_reason = Column(Integer)
+    appeal_a_pin_result = Column(Text)
+    appeal_a_propav = Column(Integer)
+    appeal_a_currav = Column(Integer)
+    appeal_a_resltdate = Column(Text)
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            value = value.strip() if isinstance(value, str) else value
+            setattr(self, key, value)
