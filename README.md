@@ -12,7 +12,7 @@ Front-end and backend to allow users to search, select, or unselect properties f
 
 ## Requirements
 - Build frontend with Element.js and Vue.js
-- Create DB from data in excel file (suggestion: Sqlite)
+- [x] ~~Create DB from data in excel file (suggestion: Sqlite)~~
 - Create API to interact with database (suggestion: falcon, flask, express...)
 - Input field with [autocomplete](https://element.eleme.io/#/en-US/component/input#autocomplete), displaying the properties from the DB through the API.
   - On Selection of search result, save as "Selected" to DB.

@@ -70,6 +70,7 @@ class RealEstateProperty(Base):
     appeal_a_propav = Column(Integer)
     appeal_a_currav = Column(Integer)
     appeal_a_resltdate = Column(Text)
+    selected = Column(Boolean)
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():
