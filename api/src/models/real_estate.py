@@ -1,12 +1,10 @@
 # coding: utf-8
 from sqlalchemy import Boolean, Column, Float, Integer, Text
-from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
-metadata = Base.metadata
+from db.base import Base, Serializer
 
 
-class RealEstateProperty(Base):
+class RealEstateProperty(Base, Serializer):
     __tablename__ = 'real_estate_properties'
 
     property_id = Column(Integer, primary_key=True)
@@ -70,7 +68,7 @@ class RealEstateProperty(Base):
     appeal_a_propav = Column(Integer)
     appeal_a_currav = Column(Integer)
     appeal_a_resltdate = Column(Text)
-    selected = Column(Boolean)
+    selected = Column(Boolean, default=False)
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():

@@ -1,10 +1,10 @@
-from pathlib import Path
-
 from openpyxl import load_workbook
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from data.models import RealEstateProperty
+from models.real_estate import RealEstateProperty
+
+from utils.directory_resolvers import get_db_uri, get_file_path
 
 
 def resolve_headers(worksheet):
@@ -35,14 +35,14 @@ def insert_data(engine, database_objects):
     with Session() as session:
         session.add_all(database_objects)
         session.commit()
+    return True
 
 
 if __name__ == '__main__':
-    project_path = Path(__file__).parents[3]
-    excel_file_path = project_path.joinpath(
-        'source_data/Enodo_Skills_Assessment_Data_File.xlsx')
+    excel_file_path = get_file_path('Enodo_Skills_Assessment_Data_File.xlsx')
     db_objects = convert_excel_to_db_objects(excel_file_path, RealEstateProperty)
 
-    db_path = project_path.joinpath('api/data/real_estate.db')
-    engine = create_engine(f'sqlite:///{db_path}')
+    db_uri = get_db_uri('real_estate.db')
+    engine = create_engine(db_uri)
     insert_data(engine, db_objects)
+    print('Data insertion completed successfully')

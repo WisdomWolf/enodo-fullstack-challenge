@@ -61,5 +61,5 @@ CREATE TABLE real_estate_properties (
     appeal_a_propav        INTEGER,
     appeal_a_currav        INTEGER,
     appeal_a_resltdate     TEXT,
-    selected               BOOLEAN
+    selected               BOOLEAN DEFAULT FALSE NOT NULL
 );
