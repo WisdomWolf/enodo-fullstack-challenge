@@ -45,6 +45,11 @@ def get_property(property_id):
 
 
 def _get_property(property_id):
+    """
+    Internal method to resolve property for use by REST functions
+    :param property_id: ID of the property to retrieve
+    :return:
+    """
     return RealEstateProperty.query.filter_by(
         property_id=property_id).first()
 
