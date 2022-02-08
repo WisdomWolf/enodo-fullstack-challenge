@@ -1,22 +1,16 @@
 import Vue from 'vue'
-import Router from 'vue-router'
 
-const routerOptions = [
+const routes = [
     { path: '/', component: 'Landing' },
     { path: '*', component: 'NotFound' },
     { path: '/properties', name: 'Enodo Challenge', component: 'PropertiesTable' }
 ]
 
-const routes = routerOptions.map(route => {
-    return {
-        ...route,
-        component: () => import(`@/components/${route.component}.vue`)
-    }
-})
-
-Vue.use(Router)
-
-export default new Router({
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHistory(),
     routes,
-    mode: 'history'
 })
+
+const app = Vue.createApp()
+app.use(router)
+app.mount('#app')

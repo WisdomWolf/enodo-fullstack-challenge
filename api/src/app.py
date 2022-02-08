@@ -1,6 +1,6 @@
 from os import getenv
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
 from db.base import Base
@@ -18,24 +18,23 @@ db = SQLAlchemy(app, model_class=Base)
 
 @app.get('/api/properties')
 def get_properties():
-    properties = RealEstateProperty.query.all()
+    if selected := request.args.get('selected') is not None:
+        properties = RealEstateProperty.query.filter_by(selected=selected).all()
+    else:
+        properties = RealEstateProperty.query.all()
     return jsonify(RealEstateProperty.serialize_list(properties))
 
 
-@app.put('/api/properties/select/<property_id>')
-def select_property(property_id):
-    re_property = _get_property(property_id)
-    re_property.selected = True
-    db.session.commit()
-    return jsonify(re_property.serialize())
-
-
-@app.delete('/api/properties/select/<property_id>')
-def unselect_property(property_id):
-    re_property = _get_property(property_id)
-    re_property.selected = False
-    db.session.commit()
-    return jsonify(re_property.serialize())
+@app.put('/api/properties/<property_id>')
+def update_property(property_id):
+    selected = request.args.get('selected')
+    if selected is not None:
+        re_property = _get_property(property_id)
+        re_property.selected = True if selected.lower() == 'true' else False
+        db.session.commit()
+        return jsonify(re_property.serialize())
+    else:
+        return False
 
 
 @app.get('/api/properties/<property_id>')
