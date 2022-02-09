@@ -1,8 +1,5 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine
-RUN apk --update add bash nano
-ENV STATIC_URL /static
-ENV STATIC_PATH /var/www/app/static
+FROM tiangolo/meinheld-gunicorn-flask:python3.9
 COPY ./src /app/
 COPY ./Pipfile* /setup/
 WORKDIR /setup
-RUN pip install -U pip && pip install pipenv && pipenv sync --system
+RUN pip install -U pip && pip install pipenv && pipenv install --system && pip install greenlet==0.4.17

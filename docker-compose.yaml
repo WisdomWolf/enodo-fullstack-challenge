@@ -12,6 +12,7 @@ services:
     container_name: enodo-challenge-api
     environment:
       PORT: 8000
+      DATA_PATH: /data
     build:
       context: ./api
       dockerfile: Dockerfile
@@ -21,3 +22,5 @@ services:
         target: /data
     expose:
       - 8000
+    ports:
+      - "8000:8000"
