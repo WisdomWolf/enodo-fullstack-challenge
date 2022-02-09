@@ -13,6 +13,9 @@ flask-cors = "*"
 [dev-packages]
 ipython = "*"
 requests = "*"
+pytest = "*"
+pyyaml = "*"
+pytest-datadir = "*"
 
 [requires]
 python_version = "3.9"
