@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  ui:
+    container_name: enodo-challenge-ui
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+  api:
+    container_name: enodo-challenge-api
+    environment:
+      PORT: 8000
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./api/data
+        target: /data
+    expose:
+      - 8000
