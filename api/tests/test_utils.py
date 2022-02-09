@@ -1,10 +1,8 @@
 from os import environ
 from pathlib import Path
-import subprocess
 
 from openpyxl import load_workbook
 import pytest
-import yaml
 
 from utils.directory_resolvers import get_db_uri, get_file_path, get_project_path
 from utils.data_loader import resolve_headers

@@ -5,15 +5,21 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from models.real_estate import RealEstateProperty
-from utils.directory_resolvers import get_db_uri
+from utils.directory_resolvers import get_db_uri, get_project_path
 
+import logging
+
+logger = logging.getLogger()
 
 @pytest.fixture
 def setup_database():
     try:
-        result = subprocess.run(['bash', '../initialize-database.sh'])
+        project_path = get_project_path()
+        script_path = project_path.joinpath('api/initialize-database.sh')
+        result = subprocess.run(['bash', f'{script_path}'])
         assert result.returncode == 0
     except Exception:  # We want to halt if anything goes wrong at this step
+        logger.exception('oh noes!')
         pytest.exit('Exiting because database init failed')
 
 
