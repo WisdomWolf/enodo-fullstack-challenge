@@ -21,5 +21,5 @@ Front-end and backend to allow users to search, select, or unselect properties f
   - [x] ~~Column 2: Class Description~~
   - [x] ~~Column 3: Delete button~~
 - [x] ~~Include a delete button to unselect property from DB.~~
-- [ ] Add a test to your implementation.
-- [ ] Include a Readme on how to run your solution.
+- [x] ~~Add a test to your implementation.~~
+- [x] ~~Include a Readme on how to run your solution.~~
