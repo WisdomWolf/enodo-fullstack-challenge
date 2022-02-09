@@ -59,3 +59,67 @@ headers:
 - appeal_a_propav
 - appeal_a_currav
 - appeal_a_resltdate
+models:
+  estate_one:
+    ac: 2
+    age: 127
+    appcnt: 0
+    appeal_a: 0
+    appeal_a_currav: 0
+    appeal_a_pin_result: null
+    appeal_a_propav: 0
+    appeal_a_reason: 0
+    appeal_a_resltdate: ''
+    appeal_a_result: null
+    appeal_a_status: ''
+    apt: ''
+    apt_desc: '2'
+    attic_desc: None
+    bldg_sf: ''
+    bldg_use: Multi Family
+    bsmt_desc: Partial and Unfinished
+    building_sq_ft: 3007
+    city: CHICAGO
+    class_description: Two to Six Apartments, Over 62 Years
+    comm_units: 0
+    current_building: 44582
+    current_land: 15000
+    current_total: 59582
+    deed_type: 0
+    dir: N
+    estimated_market_value: 595820
+    ext_desc: Masonry
+    fireplace: 0
+    full_address: 210 N JUSTINE ST, CHICAGO, IL
+    full_bath: 2
+    gar_desc: ''
+    half_bath: 0
+    houseno: 210
+    land_sq_ft: 5000
+    latitude: 41.8857718
+    loc: CITY
+    longitude: -87.6656354999999
+    multi_sale: false
+    neighborhood: 131
+    ovacls: 211
+    pin: 17083150310000
+    pprior_building: 44601
+    pprior_land: 12500
+    pprior_total: 57101
+    pprior_year: 2013
+    prior_building: 44601
+    prior_land: 12500
+    prior_total: 57101
+    property_id: 1
+    rec_type: A-HD
+    res_type: Two Story
+    sale_amount: 0
+    sale_date: ''
+    selected: false
+    street: JUSTINE
+    suffix: ST
+    tax_code: 77020
+    town: 77
+    units_tot: ''
+    volume: 590
+    zip: 60607

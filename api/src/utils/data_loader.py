@@ -1,10 +1,13 @@
+import logging
+
 from openpyxl import load_workbook
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from models.real_estate import RealEstateProperty
-
 from utils.directory_resolvers import get_db_uri, get_file_path
+
+logger = logging.getLogger(__name__)
 
 
 def resolve_headers(worksheet):
@@ -33,9 +36,11 @@ def insert_data(engine, database_objects):
     # TODO: Make idempotent to prevent data duplication
     Session = sessionmaker(engine)
     with Session() as session:
-        session.add_all(database_objects)
-        session.commit()
-    return True
+        try:
+            session.add_all(database_objects)
+            session.commit()
+        except Exception:
+            logger.exception('Something went wrong when loading data to database')
 
 
 if __name__ == '__main__':

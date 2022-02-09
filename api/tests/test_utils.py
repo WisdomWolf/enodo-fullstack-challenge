@@ -1,5 +1,6 @@
 from os import environ
 from pathlib import Path
+import subprocess
 
 from openpyxl import load_workbook
 import pytest
@@ -10,11 +11,8 @@ from utils.data_loader import resolve_headers
 
 
 @pytest.fixture
-def headers(shared_datadir):
-    file_path = Path(shared_datadir).joinpath('sample_data.yaml')
-    with open(file_path) as f:
-        data = yaml.safe_load(f)
-    return data['headers']
+def headers(sample_data):
+    return sample_data['headers']
 
 
 def test_get_project_path():
