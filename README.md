@@ -1,4 +1,4 @@
-# Run Challenge Server
+# Run Enodo Example Server
 From a terminal execute `run_enodo_example_server.sh`.  It should create the necessary docker containers and open a web browser pointed at the site.
 
 ### Run Tests
